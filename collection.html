@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta property="og:title" content="PokeLids' Trak">
-<meta property="og:description" content="Browse, search, and locate all Pokemon manhole covers">
-<meta property="og:image" content="about-img.png">
-<link rel="icon" href="about-img.png">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Collection - PokeLids' Trak</title>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta property="og:title" content="PokeLids' Trak">
+  <meta property="og:description" content="Browse, search, and locate all Pokemon manhole covers">
+  <meta property="og:image" content="about-img.png">
+  <link rel="icon" href="about-img.png">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Collection - PokeLids' Trak</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<h1>PokeLids' <span>Trak</span></h1>
-</header>
-<nav>
-<a href="index.html">All</a>
-<a href="prefectures.html">Prefectures</a>
-<a href="collection.html" class="active">Collection</a>
-<a href="about.html">About</a>
-</nav>
-<main>
-<h2 class="page-title">My Collection</h2>
-<div id="stats"></div>
-<div id="grid"></div>
-<p style="text-align:center;margin-top:16px"><a href="#" id="clearAll" class="detail-btn secondary">Clear all visited</a></p>
-</main>
-<script src="data.js"></script>
-<script src="app.js"></script>
-<script>
-var all = window.ALL_MANHOLES;
-function showCollection(){
-  var visited = getVisited();
-  var list = all.filter(function(m){ return visited.indexOf(String(m.id)) !== -1; });
-  renderGrid(byId('grid'), list);
-  renderStats(byId('stats'), list.length, all.length);
-}
-byId('clearAll').addEventListener('click', function(e){
-  e.preventDefault();
-  if(confirm('Clear all visited marks?')){
-    localStorage.removeItem('v');
+  <header>
+    <h1>PokeLids' <span>Trak</span></h1>
+  </header>
+  <nav>
+    <a href="index.html">All</a>
+    <a href="prefectures.html">Prefectures</a>
+    <a href="collection.html" class="active">Collection</a>
+    <a href="about.html">About</a>
+  </nav>
+  <main>
+    <h2 class="page-title">My Collection</h2>
+    <div id="stats"></div>
+    <div id="grid"></div>
+    <p style="text-align:center;margin-top:16px"><a href="#" id="clearAll" class="detail-btn secondary">Clear all visited</a></p>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    var all = window.ALL_MANHOLES;
+
+    function showCollection() {
+      var visited = getVisited();
+      var list = all.filter(function(m) { return visited.indexOf(String(m.id)) !== -1; });
+      renderGrid(byId('grid'), list);
+      renderStats(byId('stats'), list.length, all.length);
+    }
+    byId('clearAll').addEventListener('click', function(e) {
+      e.preventDefault();
+      if (confirm('Clear all visited marks?')) {
+        localStorage.removeItem('v');
+        showCollection();
+      }
+    });
     showCollection();
-  }
-});
-showCollection();
-</script>
+  </script>
 </body>
 </html>

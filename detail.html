@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta property="og:title" content="PokeLids' Trak">
-<meta property="og:description" content="Browse, search, and locate all Pokemon manhole covers">
-<meta property="og:image" content="about-img.png">
-<link rel="icon" href="about-img.png">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>PokeLids' Trak</title>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta property="og:title" content="PokeLids' Trak">
+  <meta property="og:description" content="Browse, search, and locate all Pokemon manhole covers">
+  <meta property="og:image" content="about-img.png">
+  <link rel="icon" href="about-img.png">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>PokeLids' Trak</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<h1>PokeLids' <span>Trak</span></h1>
-</header>
-<nav>
-<a href="index.html">All</a>
-<a href="prefectures.html">Prefectures</a>
-<a href="collection.html">Collection</a>
-<a href="about.html">About</a>
-</nav>
-<main>
-<div id="detail-content"></div>
-</main>
-<script src="data.js"></script>
-<script src="app.js"></script>
-<script>
-var id = getUrlParam('id');
-var m = getManholeById(id);
-var dc = byId('detail-content');
+  <header>
+    <h1>PokeLids' <span>Trak</span></h1>
+  </header>
+  <nav>
+    <a href="index.html">All</a>
+    <a href="prefectures.html">Prefectures</a>
+    <a href="collection.html">Collection</a>
+    <a href="about.html">About</a>
+  </nav>
+  <main>
+    <div id="detail-content"></div>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    var id = getUrlParam('id');
+    var m = getManholeById(id);
+    var dc = byId('detail-content');
 
-if(!m){
-  dc.innerHTML = '<p style="text-align:center;padding:40px;color:#888">Manhole not found. <a href="index.html" class="detail-btn secondary" style="display:inline-block;margin-top:12px">Go back</a></p>';
-} else {
-  document.title = m.name + ' - PokeLids\' Trak';
-  var visited = isVisited(id);
-  var left = '<div class="detail-left"><img src="'+m.image+'" alt="'+m.name+'">' +
-    '<h2>'+m.name+'</h2>' +
-    '<p class="pref-label">'+m.prefecture+'</p>' +
-    '<div style="display:flex;gap:8px;margin-top:12px">' +
-    '<a href="#" id="toggleVisit" class="detail-btn '+(visited?'secondary':'primary')+'">'+(visited?'✓ Visited':'Mark visited')+'</a>' +
-    '<a href="index.html" class="detail-btn secondary">&larr; Back</a></div></div>';
-  var right = '';
-  if(m.lat && m.lng){
-    right = '<div class="detail-right">' +
-      '<div class="map-wrap"><iframe src="https://www.google.com/maps?q='+m.lat+','+m.lng+'&z=15&output=embed" allowfullscreen loading="lazy"></iframe></div>' +
-      '<a class="detail-btn primary" href="https://www.google.com/maps?q='+m.lat+','+m.lng+'" target="_blank" rel="noopener">Open in Google Maps</a></div>';
-  }
-  dc.innerHTML = '<div class="detail-layout">' + left + right + '</div>';
-  byId('toggleVisit').addEventListener('click', function(e){
-    e.preventDefault();
-    toggleVisited(id);
-    this.textContent = isVisited(id) ? '✓ Visited' : 'Mark visited';
-    this.className = 'detail-btn ' + (isVisited(id) ? 'secondary' : 'primary');
-  });
-}
-</script>
+    if (!m) {
+      dc.innerHTML = '<p style="text-align:center;padding:40px;color:#888">Manhole not found. <a href="index.html" class="detail-btn secondary" style="display:inline-block;margin-top:12px">Go back</a></p>';
+    } else {
+      document.title = m.name + ' - PokeLids\' Trak';
+      var visited = isVisited(id);
+      var left = '<div class="detail-left"><img src="' + m.image + '" alt="' + m.name + '">' +
+        '<h2>' + m.name + '</h2>' +
+        '<p class="pref-label">' + m.prefecture + '</p>' +
+        '<div style="display:flex;gap:8px;margin-top:12px">' +
+        '<a href="#" id="toggleVisit" class="detail-btn ' + (visited ? 'secondary' : 'primary') + '">' + (visited ? '✓ Visited' : 'Mark visited') + '</a>' +
+        '<a href="index.html" class="detail-btn secondary">&larr; Back</a></div></div>';
+      var right = '';
+      if (m.lat && m.lng) {
+        right = '<div class="detail-right">' +
+          '<div class="map-wrap"><iframe src="https://www.google.com/maps?q=' + m.lat + ',' + m.lng + '&z=15&output=embed" allowfullscreen loading="lazy"></iframe></div>' +
+          '<a class="detail-btn primary" href="https://www.google.com/maps?q=' + m.lat + ',' + m.lng + '" target="_blank" rel="noopener">Open in Google Maps</a></div>';
+      }
+      dc.innerHTML = '<div class="detail-layout">' + left + right + '</div>';
+      byId('toggleVisit').addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleVisited(id);
+        this.textContent = isVisited(id) ? '✓ Visited' : 'Mark visited';
+        this.className = 'detail-btn ' + (isVisited(id) ? 'secondary' : 'primary');
+      });
+    }
+  </script>
 </body>
 </html>

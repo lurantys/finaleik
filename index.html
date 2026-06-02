@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta property="og:title" content="PokeLids' Trak">
-<meta property="og:description" content="Browse, search, and locate all Pokemon manhole covers">
-<meta property="og:image" content="about-img.png">
-<link rel="icon" href="about-img.png">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>PokeLids' Trak</title>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta property="og:title" content="PokeLids' Trak">
+  <meta property="og:description" content="Browse, search, and locate all Pokemon manhole covers">
+  <meta property="og:image" content="about-img.png">
+  <link rel="icon" href="about-img.png">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>PokeLids' Trak</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-index">
-<header>
-<h1>PokeLids' <span>Trak</span></h1>
-</header>
-<nav>
-<a href="index.html" class="active">All</a>
-<a href="prefectures.html">Prefectures</a>
-<a href="collection.html">Collection</a>
-<a href="about.html">About</a>
-</nav>
-<main>
-<div class="controls">
-<input id="search" type="text" placeholder="Search by name or prefecture..." autocomplete="off">
-<select id="prefFilter"></select>
-</div>
-<div id="stats"></div>
-<div id="grid"></div>
-</main>
-<script src="data.js"></script>
-<script src="app.js"></script>
-<script>
-var pref = getUrlParam('pref');
-var all = window.ALL_MANHOLES;
-var filtered;
+  <header>
+    <h1>PokeLids' <span>Trak</span></h1>
+  </header>
+  <nav>
+    <a href="index.html" class="active">All</a>
+    <a href="prefectures.html">Prefectures</a>
+    <a href="collection.html">Collection</a>
+    <a href="about.html">About</a>
+  </nav>
+  <main>
+    <div class="controls">
+      <input id="search" type="text" placeholder="Search by name or prefecture..." autocomplete="off">
+      <select id="prefFilter"></select>
+    </div>
+    <div id="stats"></div>
+    <div id="grid"></div>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    var pref = getUrlParam('pref');
+    var all = window.ALL_MANHOLES;
+    var filtered;
 
-function filter(){
-  var q = byId('search').value.toLowerCase();
-  var p = byId('prefFilter').value;
-  filtered = all.filter(function(m){
-    return (m.name.toLowerCase().indexOf(q) !== -1 || m.prefecture.toLowerCase().indexOf(q) !== -1) &&
-      (!p || m.prefecture === p);
-  });
-  renderGrid(byId('grid'), filtered);
-  renderStats(byId('stats'), filtered.length, all.length);
-}
+    function filter() {
+      var q = byId('search').value.toLowerCase();
+      var p = byId('prefFilter').value;
+      filtered = all.filter(function(m) {
+        return (m.name.toLowerCase().indexOf(q) !== -1 || m.prefecture.toLowerCase().indexOf(q) !== -1) &&
+          (!p || m.prefecture === p);
+      });
+      renderGrid(byId('grid'), filtered);
+      renderStats(byId('stats'), filtered.length, all.length);
+    }
 
-byId('search').addEventListener('input', filter);
-byId('prefFilter').addEventListener('change', filter);
-byId('grid').addEventListener('click', function(e){
-  var card = e.target.closest('.card');
-  if(card) goToDetail(card.dataset.id);
-});
+    byId('search').addEventListener('input', filter);
+    byId('prefFilter').addEventListener('change', filter);
+    byId('grid').addEventListener('click', function(e) {
+      var card = e.target.closest('.card');
+      if (card) goToDetail(card.dataset.id);
+    });
 
-buildPrefFilter(byId('prefFilter'), pref || '');
-if(pref) byId('prefFilter').value = pref;
-filter();
-</script>
+    buildPrefFilter(byId('prefFilter'), pref || '');
+    if (pref) byId('prefFilter').value = pref;
+    filter();
+  </script>
 </body>
 </html>
