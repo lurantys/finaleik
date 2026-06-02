@@ -32,13 +32,26 @@ header {
 }
 
 #themeToggle {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
+  z-index: 999;
+  padding: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .2);
+  transition: transform .2s;
+}
+
+#themeToggle:hover {
+  transform: scale(1.1);
+}
+
+[data-theme="dark"] #themeToggle {
+  background: #222;
 }
 
 header h1 {
