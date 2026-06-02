@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Prefectures - PokeLids' Trak</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>PokeLids' <span>Trak</span></h1>
+</header>
+<nav>
+<a href="index.html">All</a>
+<a href="prefectures.html" class="active">Prefectures</a>
+<a href="collection.html">Collection</a>
+<a href="about.html">About</a>
+</nav>
+<main>
+<h2 class="page-title">Prefectures</h2>
+<div id="prefList" class="pref-list"></div>
+</main>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+var prefs = getPrefectures();
+byId('prefList').innerHTML = prefs.map(function(p){
+  return '<div class="pref-card" data-pref="'+p.name+'"><h3>'+p.name+'</h3><div class="count">'+p.count+' Pok\u00e9 Lids</div></div>';
+}).join('');
+byId('prefList').addEventListener('click', function(e){
+  var card = e.target.closest('.pref-card');
+  if(card) goToIndex(card.dataset.pref);
+});
+</script>
+</body>
+</html>
