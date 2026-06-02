@@ -69,3 +69,23 @@ function buildPrefFilter(select, selected){
       return '<option value="'+p.name+'"'+s+'>'+p.name+' ('+p.count+')</option>';
     }).join('');
 }
+
+// Theme toggle
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  var el = byId('themeToggle');
+  if (el) el.src = theme === 'dark' ? 'assets/lightmode.png' : 'assets/darkmode.png';
+}
+
+function toggleTheme() {
+  var current = document.documentElement.getAttribute('data-theme') || 'light';
+  setTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+(function() {
+  var saved = localStorage.getItem('theme') || 'light';
+  setTheme(saved);
+  var el = byId('themeToggle');
+  if (el) el.addEventListener('click', toggleTheme);
+})();

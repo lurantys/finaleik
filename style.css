@@ -23,11 +23,22 @@ a:hover {
 }
 
 header {
+  position: relative;
   background: #fff;
   color: #333;
   padding: 16px 20px;
   text-align: center;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+}
+
+#themeToggle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
 header h1 {
@@ -311,6 +322,47 @@ main {
 
 .page-index header h1 {
   font-size: 22px;
+}
+
+[data-theme="dark"] {
+  background: #1a1a2e;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] header,
+[data-theme="dark"] nav {
+  background: #16213e;
+  color: #e0e0e0;
+  border-color: #2a2a4a;
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .pref-card,
+[data-theme="dark"] .controls input,
+[data-theme="dark"] .controls select {
+  background: #16213e;
+  color: #e0e0e0;
+  border-color: #2a2a4a;
+}
+
+[data-theme="dark"] .card .pref,
+[data-theme="dark"] .pref-card .count,
+[data-theme="dark"] #stats,
+[data-theme="dark"] .detail-left .pref-label {
+  color: #888;
+}
+
+[data-theme="dark"] .about-text {
+  color: #ccc;
+}
+
+[data-theme="dark"] .detail-btn.secondary {
+  background: #2a2a4a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .card img {
+  background: #2a2a4a;
 }
 
 @media (max-width: 600px) {
