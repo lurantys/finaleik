@@ -325,24 +325,24 @@ main {
 }
 
 [data-theme="dark"] {
-  background: #1a1a2e;
-  color: #e0e0e0;
+  background: #111;
+  color: #ddd;
 }
 
 [data-theme="dark"] header,
 [data-theme="dark"] nav {
-  background: #16213e;
-  color: #e0e0e0;
-  border-color: #2a2a4a;
+  background: #222;
+  color: #ddd;
+  border-color: #333;
 }
 
 [data-theme="dark"] .card,
 [data-theme="dark"] .pref-card,
 [data-theme="dark"] .controls input,
 [data-theme="dark"] .controls select {
-  background: #16213e;
-  color: #e0e0e0;
-  border-color: #2a2a4a;
+  background: #222;
+  color: #ddd;
+  border-color: #333;
 }
 
 [data-theme="dark"] .card .pref,
@@ -353,16 +353,16 @@ main {
 }
 
 [data-theme="dark"] .about-text {
-  color: #ccc;
+  color: #bbb;
 }
 
 [data-theme="dark"] .detail-btn.secondary {
-  background: #2a2a4a;
-  color: #e0e0e0;
+  background: #333;
+  color: #ddd;
 }
 
 [data-theme="dark"] .card img {
-  background: #2a2a4a;
+  background: #333;
 }
 
 @media (max-width: 600px) {
