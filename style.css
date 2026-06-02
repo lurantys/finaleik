@@ -137,6 +137,24 @@ main {
   gap: 12px;
 }
 
+.empty-collection {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-collection p {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #888;
+}
+
+.empty-collection img {
+  width: 200px;
+  max-width: 80%;
+  border-radius: 12px;
+}
+
 .card {
   background: #fff;
   border-radius: 12px;
@@ -376,6 +394,10 @@ main {
 
 [data-theme="dark"] .card img {
   background: #333;
+}
+
+[data-theme="dark"] .empty-collection p {
+  color: #666;
 }
 
 @media (max-width: 600px) {

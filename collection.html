@@ -38,6 +38,9 @@
       var list = all.filter(function(m) { return visited.indexOf(String(m.id)) !== -1; });
       renderGrid(byId('grid'), list);
       renderStats(byId('stats'), list.length, all.length);
+      if (list.length === 0) {
+        byId('grid').innerHTML = '<div class="empty-collection"><p>Gotta catch \'em all!</p><img src="assets/encourage.png" alt="Encourage"></div>';
+      }
     }
     byId('clearAll').addEventListener('click', function(e) {
       e.preventDefault();
