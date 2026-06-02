@@ -324,7 +324,7 @@ main {
   font-size: 22px;
 }
 
-[data-theme="dark"] {
+[data-theme="dark"] body {
   background: #111;
   color: #ddd;
 }
